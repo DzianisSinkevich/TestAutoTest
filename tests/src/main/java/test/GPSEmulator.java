@@ -44,6 +44,7 @@ public class GPSEmulator {
 		uD.add(new UserData("vod48", "123456798", "23.870", "53.680"));
 		uD.add(new UserData("vod49", "123456798", "23.860", "53.680"));
 		uD.add(new UserData("vod50", "123456798", "23.850", "53.670"));
+		uD.add(new UserData("vod51", "123456798", "23.850", "53.670"));
 //		uD.add(new UserData("vod51", "123456798", "23.840", "53.680"));
 //		uD.add(new UserData("vod52", "123456798", "23.830", "53.675"));
 //		uD.add(new UserData("vod53", "123456798", "23.820", "53.685"));
