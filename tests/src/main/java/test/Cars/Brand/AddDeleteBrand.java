@@ -7,18 +7,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+
+import test.OpenPage;
+import test.Utils;
 
 public class AddDeleteBrand {
 
 	static boolean flag = true;
-
+	static OpenPage openPage = new OpenPage();
 	static String brandsCars1;
-
 	static List<String> brandCars = new ArrayList<String>();
-
 	static List<WebElement> elements = new ArrayList<WebElement>();
 	static List<WebElement> errorNotify = new ArrayList<WebElement>();
 
@@ -29,47 +28,18 @@ public class AddDeleteBrand {
 		brandCars.add("brand2");
 		brandCars.add("brand3");
 		brandCars.add("brand4");
+		Utils utils = new Utils();
+		WebDriver driver = utils.createDriver();
+		utils.login(driver);
 
-		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-
-		// создаём опцию для хромдрайвера, где указываем размеры страницы
-		ChromeOptions option = new ChromeOptions();
-		option.addArguments("--window-size=1300,1000");
-		WebDriver driver = new ChromeDriver(option);
-
-		// открываем страницу логина, проходим http - авторизацию
-		driver.get("http://qa:bfh365Dkjfh@qa.taxi.dancosoft.com/site/login");
-
-		Thread.sleep(1500);
-
-		// вводим логин
-		WebElement loginElement = driver.findElement(By.cssSelector(".js-login"));
-		loginElement.sendKeys("autotest");
-
-		// вводим пароль
-		WebElement element = driver.findElement(By.cssSelector("[type='password']"));
-		element.sendKeys("autotest");
-		// нажимаем кнопку входа
-		WebElement submitElement = driver.findElement(By.cssSelector("button"));
-		submitElement.click();
-
-		Thread.sleep(3000);
-		openCars(driver);
+		openPage = new OpenPage();
+		openPage.openPageTab(driver,"http://qa.taxi.dancosoft.com/site/cars",  "[data-target='.tab-brands']");
 		checkAmmountBrand(driver);
 		addNew(driver);
 		if (checkAddedBrands(driver)) {
 			deleteEmployee(driver, brandsCars1);
 			checkAmmountBrand(driver);
 		}
-	}
-
-	// открытие страницы Машины - Марки автомобилей
-	public static void openCars(WebDriver driver) throws InterruptedException {
-		Thread.sleep(500);
-		driver.get("http://qa.taxi.dancosoft.com/site/cars");
-		Thread.sleep(1500);
-		driver.findElement(By.cssSelector("[data-target='.tab-brands']")).click();
-		Thread.sleep(2000);
 	}
 
 	// добавление новой марки
@@ -122,7 +92,7 @@ public class AddDeleteBrand {
 
 	// поиск добавленной марки в таблице
 	public static void checkAmmountBrand(WebDriver driver) throws InterruptedException {
-		openCars(driver);
+		openPage.openPageTab(driver,"http://qa.taxi.dancosoft.com/site/cars",  "[data-target='.tab-brands']");
 
 		Thread.sleep(500);
 		int ammount1 = 0;
@@ -279,7 +249,7 @@ public class AddDeleteBrand {
 
 	// удаление созданного т/с
 	public static void deleteEmployee(WebDriver driver, String callsign) throws InterruptedException {
-		openCars(driver);
+		openPage.openPageTab(driver,"http://qa.taxi.dancosoft.com/site/cars",  "[data-target='.tab-brands']");
 
 		boolean brandIsDeletted = false;
 
