@@ -28,6 +28,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/GeniePlugin.jar"/>
-	<classpathentry kind="lib" path="D:/Genie/GenieScripts/Executor.jar"/>
+	<classpathentry kind="lib" path="Genie/GenieScripts/Executor.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
