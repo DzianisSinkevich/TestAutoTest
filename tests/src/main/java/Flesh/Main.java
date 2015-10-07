@@ -1,10 +1,10 @@
 package Flesh;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,9 +14,11 @@ public class Main {
 	static List<WebElement> elements = new ArrayList<WebElement>();
 
 	public static void main(String[] args) throws Exception {
+
 		WebDriver driver = new FirefoxDriver();
 
 		driver.get("http://cosmics.net/");
+		driver.manage().window().setSize(new Dimension(1200, 1000));
 		Thread.sleep(5000);
 		driver.findElement(By.id("edit-name")).sendKeys("sidco93@mail.ru");
 		driver.findElement(By.id("edit-pass")).sendKeys("adept13a");
@@ -28,21 +30,6 @@ public class Main {
 		Thread.sleep(3000);
 
 		for (int i = 0; i <= 20; i++) {
-			// Thread.sleep(100);
-			// elements = driver
-			// .findElements(By
-			// .id("SP^field_object:::FP^obj:::SE^sensor::PX^0::PTR^0::IX^1::ITR^"
-			// + i + ""));
-			// if (elements.size() > 0) {
-			// System.out.println("" + i + " is found");
-			// } else {
-			// System.out.println("" + i + " not found");
-			// }
-			System.out
-					.println(isElementPresent(
-							driver,
-							By.id("SP^field_object:::FP^obj:::SE^sensor::PX^0::PTR^0::IX^1::ITR^"
-									+ i + "")));
 		}
 
 		Thread.sleep(15000);
@@ -57,7 +44,8 @@ public class Main {
 	}
 
 	private static void doScript(String className) {
-		String path = "F:\\JAVA\\GIT\\tests\\target\\classes\\Flesh\\";
+		// String path = "F:\\JAVA\\GIT\\tests\\target\\classes\\Flesh\\";
+		String path = "D:\\GIT\\TestAutoTest\\tests\\target\\classes\\Flesh\\";
 		GenieScriptsExecutor.ExecuteScript(path + className + ".class");
 	}
 }

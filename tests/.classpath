@@ -27,7 +27,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="F:/JAVA/Genie/GenieScripts/Executor.jar"/>
 	<classpathentry kind="lib" path="lib/GeniePlugin.jar"/>
+	<classpathentry kind="lib" path="D:/Genie/GenieScripts/Executor.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
