@@ -1,5 +1,7 @@
 package Flesh;
 
+import java.text.Format.Field;
+
 import com.adobe.genie.executor.GenieScript;
 import com.adobe.genie.executor.components.GenieDisplayObject;
 import com.adobe.genie.executor.components.GenieSprite;
@@ -36,11 +38,11 @@ public class SouthClick extends GenieScript {
 		// click na South
 		(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1)).click();
 		// click na scroll vverh
-//		(new GenieSprite("FP^scroller_vertical:::SE^Sprite:::CH^Bitmap::PX^3::PTR^0::IX^1::ITR^0", app1)).click();
-
+//		(new GenieSprite("FP^scroller_vertical:::SE^Sprite:::CH^Bitmap::PX^3::PTR^0::IX^1::ITR^0", app1)).click();		
+		
 		for (int i = 0; i < 100000; i++) {
 			// click na object
-			for (j = tempJ; j <= 21; j++) {
+			for (j = tempJ; j <= 21;) {
 				selectorFish = "";
 				selectorFish = "SP^field_object:::FP^obj:::SE^sensor::PX^0::PTR^0::IX^1::ITR^" + j;
 				try {
@@ -53,7 +55,6 @@ public class SouthClick extends GenieScript {
 							(new GenieDisplayObject(selectorFish, app1)).click();
 							(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^2::PTR^0::IX^2::ITR^0", app1)).click();
 							Thread.sleep(25000);
-							
 							for (int k = 0; k < 50; k++) {
 								if ((new GenieDisplayObject("SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0", app1)).isPresent()) {
 									(new GenieSprite("SP^base:::FP^farming_popup:::SE^Sprite::PX^3::PTR^0::IX^3::ITR^0", app1)).click();
@@ -75,6 +76,7 @@ public class SouthClick extends GenieScript {
 				} catch (Exception e) {
 					System.out.println("Exception");
 				}
+				j++;
 			}
 			if (flagSmen > 0) {
 				if (!south) {
