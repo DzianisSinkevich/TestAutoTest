@@ -1,5 +1,7 @@
 package Flesh;
 
+import org.apache.log4j.Logger;
+
 import com.adobe.genie.executor.GenieScript;
 import com.adobe.genie.executor.components.GenieDisplayObject;
 import com.adobe.genie.executor.components.GenieSprite;
@@ -10,6 +12,7 @@ import com.adobe.genie.genieCom.SWFApp;
  */
 // Change name of the class
 public class SouthClick2 extends GenieScript {
+	private static final Logger log = Logger.getLogger(SouthClick2.class);
 
 	public SouthClick2() throws Exception {
 		super();
@@ -40,6 +43,7 @@ public class SouthClick2 extends GenieScript {
 			// click na object
 			for (j = tempJ; j <= 12;) {
 				try {
+
 					System.out.println(" - " + j + " - ");
 					System.out.println("Start IF");
 					// if ((new
