@@ -23,7 +23,7 @@ public class Main {
 		driver.findElement(By.id("edit-name")).sendKeys("sidco92@mail.ru");
 		driver.findElement(By.id("edit-pass")).sendKeys("adept13a");
 		driver.findElement(By.id("edit-submit")).click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		doScript("OhotaMenuClick");
 		Thread.sleep(4000);
 		doScript("SouthClick3");
@@ -44,8 +44,8 @@ public class Main {
 	}
 
 	private static void doScript(String className) {
-//		String path = "F:\\JAVA\\GIT\\tests\\target\\classes\\Flesh\\";
-		String path = "D:\\GIT\\TestAutoTest\\tests\\target\\classes\\Flesh\\";
+		String path = "F:\\JAVA\\GIT\\tests\\target\\classes\\Flesh\\";
+//		String path = "D:\\GIT\\TestAutoTest\\tests\\target\\classes\\Flesh\\";
 		GenieScriptsExecutor.ExecuteScript(path + className + ".class");
 	}
 }
