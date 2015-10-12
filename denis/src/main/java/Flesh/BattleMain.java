@@ -26,30 +26,35 @@ public class BattleMain {
 		driver.switchTo().frame("chat");
 		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("[onclick='chatToggleChannel(1);']")).click();
+		driver.switchTo().defaultContent();
 		Thread.sleep(15000);
 		doScript("TestScrypt");
+		checkAttack(driver);
+		System.out.println("END");
 
 		Thread.sleep(15000);
 		driver.quit();
 	}
 
 	private static void doScript(String className) {
-		String path = "F:\\JAVA\\GIT\\Denis\\target\\classes\\Flesh\\";
-		// String path "D:\\GIT\\TestAutoTest\\Denis\\target\\classes\\Flesh\\";
+		// String path = "F:\\JAVA\\GIT\\Denis\\target\\classes\\Flesh\\";
+		String path = "D:\\GIT\\TestAutoTest\\Denis\\target\\classes\\Flesh\\";
 		GenieScriptsExecutor.ExecuteScript(path + className + ".class");
 	}
 
 	public static void checkAttack(WebDriver driver) throws InterruptedException {
 		Thread.sleep(500);
+		driver.switchTo().frame("chat");
 		driver.switchTo().frame("if1");
 		elements = driver.findElements(By.cssSelector("[id^='msg']"));
 		for (WebElement element : elements) {
 			System.out.println(element.getText());
-			if (element.getText().contains("На вас ")) {
+			if (element.getText().contains("Р’С‹ ")) {
 				doScript("Battle");
 				break;
 			}
 		}
 		driver.switchTo().defaultContent();
+		System.out.println("Check attack end.");
 	}
 }

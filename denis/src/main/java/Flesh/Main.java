@@ -20,18 +20,20 @@ public class Main {
 		driver.get("http://cosmics.net/");
 		driver.manage().window().setSize(new Dimension(1200, 950));
 		Thread.sleep(1000);
-		driver.findElement(By.id("edit-name")).sendKeys("sidco92@mail.ru");
+		driver.findElement(By.id("edit-name")).sendKeys("denis13th@mail.ru");
 		driver.findElement(By.id("edit-pass")).sendKeys("adept13a");
 		driver.findElement(By.id("edit-submit")).click();
 		Thread.sleep(4000);
 		driver.switchTo().frame("chat");
 		Thread.sleep(1000);
 		driver.findElement(By.cssSelector("[onclick='chatToggleChannel(1);']")).click();
-		doScript("OhotaMenuClick");
-		Thread.sleep(4000);
-//		doScript("FishHarvest");
+		driver.switchTo().defaultContent();
+
+		// doScript("FishHarvest");
 		for (int i = 0; i < 100; i++) {
-			doScript("StoneHarvest");
+			doScript("OhotaMenuClick");
+			Thread.sleep(4000);
+			doScript("HerbHarvest");
 			checkAttack(driver);
 		}
 		Thread.sleep(2000);
@@ -48,12 +50,13 @@ public class Main {
 	}
 
 	private static void doScript(String className) {
-		String path = "F:\\JAVA\\GIT\\Denis\\target\\classes\\Flesh\\";
-		// String path "D:\\GIT\\TestAutoTest\\Denis\\target\\classes\\Flesh\\";
+		// String path = "F:\\JAVA\\GIT\\Denis\\target\\classes\\Flesh\\";
+		String path = "D:\\GIT\\TestAutoTest\\Denis\\target\\classes\\Flesh\\";
 		GenieScriptsExecutor.ExecuteScript(path + className + ".class");
 	}
 
 	public static void checkAttack(WebDriver driver) throws InterruptedException {
+		driver.switchTo().frame("chat");
 		driver.switchTo().frame("if1");
 		elements = driver.findElements(By.cssSelector("[id^='msg']"));
 		for (WebElement element : elements) {

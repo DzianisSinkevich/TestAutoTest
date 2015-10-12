@@ -40,7 +40,7 @@ public class Cosmics {
 		elements = driver.findElements(By.cssSelector("[id^='msg']"));
 		for (WebElement element : elements) {
 			System.out.println(element.getText());
-			if (element.getText().contains("�� ���")){
+			if (element.getText().contains("На Вас совершено нападение")){
 				
 			}				
 		}

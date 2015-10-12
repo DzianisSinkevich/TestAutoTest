@@ -1,7 +1,6 @@
 package Flesh;
 
 import org.apache.log4j.Logger;
-import org.seleniumhq.jetty7.util.log.Log;
 
 import com.adobe.genie.executor.GenieScript;
 import com.adobe.genie.executor.components.GenieDisplayObject;
@@ -31,7 +30,6 @@ public class Battle extends GenieScript {
 			}
 			Thread.sleep(200);
 		}
-		Log.warn("BOT IS DEATH");
 		Thread.sleep(3000);
 		
 	}
