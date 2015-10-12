@@ -29,7 +29,7 @@ public class AddDeleteEmployee {
 
 	static Calendar calendar = Calendar.getInstance();
 
-	static List<String> тameAddEmployee = new ArrayList<String>();
+	static List<String> �ameAddEmployee = new ArrayList<String>();
 	static List<String> secondNameAddEmployee = new ArrayList<String>();
 	static List<String> patronymicAddEmployee = new ArrayList<String>();
 	static List<String> cityAddEmployee = new ArrayList<String>();
@@ -75,11 +75,11 @@ public class AddDeleteEmployee {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		тameAddEmployee.add("Name0");
-		тameAddEmployee.add("Name1");
-		тameAddEmployee.add("Name2");
-		тameAddEmployee.add("Name3");
-		тameAddEmployee.add("Name4");
+		�ameAddEmployee.add("Name0");
+		�ameAddEmployee.add("Name1");
+		�ameAddEmployee.add("Name2");
+		�ameAddEmployee.add("Name3");
+		�ameAddEmployee.add("Name4");
 
 		secondNameAddEmployee.add("SecondName0");
 		secondNameAddEmployee.add("SecondName1");
@@ -182,7 +182,7 @@ public class AddDeleteEmployee {
 		driver.findElement(By.cssSelector("[class='btn-success js-btn-add btn']")).click();
 		Thread.sleep(1500);
 		// вводим имя
-		driver.findElement(By.cssSelector("[data-rv-value='model.lastName']")).sendKeys(тameAddEmployee.get((int) (Math.random() * 5)));
+		driver.findElement(By.cssSelector("[data-rv-value='model.lastName']")).sendKeys(�ameAddEmployee.get((int) (Math.random() * 5)));
 		nameMapping1 = driver.findElement(By.cssSelector("[data-rv-value='model.lastName']")).getAttribute("value");
 		// вводим фамилию
 		driver.findElement(By.cssSelector("[data-rv-value='model.firstName']")).sendKeys(secondNameAddEmployee.get((int) (Math.random() * 5)));
@@ -568,7 +568,7 @@ public class AddDeleteEmployee {
 			case 1: {
 				// вводим имя
 				driver.findElement(By.cssSelector("[data-rv-value='model.lastName']")).clear();
-				driver.findElement(By.cssSelector("[data-rv-value='model.lastName']")).sendKeys(тameAddEmployee.get((int) (Math.random() * 5)));
+				driver.findElement(By.cssSelector("[data-rv-value='model.lastName']")).sendKeys(�ameAddEmployee.get((int) (Math.random() * 5)));
 				nameMapping1 = driver.findElement(By.cssSelector("[data-rv-value='model.lastName']")).getAttribute("value");
 			}
 			case 2: {

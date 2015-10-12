@@ -7,24 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Utils {
-	// private WebDriver driver;
-	//
-	// public Utils() {
-	// System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-	//
-	// // создаём опцию для хромдрайвера, где указываем размеры страницы
-	// ChromeOptions option = new ChromeOptions();
-	// option.addArguments("--window-size=1300,1000");
-	// this.driver = new ChromeDriver(option);
-	// }
-	//
-	// public WebDriver getDriver() {
-	// return driver;
-	// }
-	//
-	// public void setDriver(WebDriver driver) {
-	// this.driver = driver;
-	// }
 
 	public WebDriver createDriver() {
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");

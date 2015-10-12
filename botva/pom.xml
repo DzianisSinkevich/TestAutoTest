@@ -1,14 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.danco.test</groupId>
-	<artifactId>test</artifactId>
-	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<properties>
-		<seelnium.version>2.47.1</seelnium.version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
+  <groupId>com.danco</groupId>
+  <artifactId>botva</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>botva</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <seelnium.version>2.47.1</seelnium.version>
+		<org.slf4j-version>1.7.12</org.slf4j-version>
 		<log4j.version>1.2.17</log4j.version>
 	</properties>
 
@@ -92,5 +96,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 </project>
