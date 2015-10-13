@@ -26,7 +26,9 @@ public class FishHarvest extends GenieScript {
 		int misRes = 0;
 		String forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^3::ITR^0";
 		int route = 2;
+
 		String nameObject = "";
+		String nameObject1 = "";
 		int kolvo = 0;
 
 		EXIT_ON_FAILURE = false;
@@ -54,14 +56,15 @@ public class FishHarvest extends GenieScript {
 				log.info("------------------------------------------------------------------------------------------------------------ COUNT - "
 						+ kolvo);
 
-				nameObject = new GenieDisplayObject(gc.getGenieID(), app1).getValueOf("type");
+//				nameObject1 = new GenieDisplayObject(gc.getGenieID(), app1).getValueOf("type");
+				nameObject = gc.getValueOf("type");
 				log.info("START IF FISH.");
 				if (nameObject.equals("fish_blue_r_fla::sensor_4")) {
 					gc.click();
 					log.info("START FARMING.");
 					(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^3::PTR^0::IX^2::ITR^0", app1))
 							.click();
-					Thread.sleep(26000);
+					Thread.sleep(11000);
 
 					log.info("START WAIT END OF FARMING.");
 					for (int k = 0; k < 35; k++) {
@@ -77,30 +80,40 @@ public class FishHarvest extends GenieScript {
 						}
 						Thread.sleep(250);
 					}
-//					break;
+					// break;
 				} else {
 					misRes++;
 				}
 			}
 
-			if (misRes + 1>= childs.length) {
+			if (misRes >= childs.length) {
 				misRes = 0;
 				switch (route) {
 				case 1: {
 					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1))
 							.click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^3::ITR^0";
-					// forChild =
-					// "FP^field:::SE^Sprite:::CH^flash.display::PX^3::PTR^0::IX^1::ITR^0";
 					route = 2;
 					break;
 				}
 				case 2: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0", app1))
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0", app1))
 							.click();
-					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^1::ITR^0";
-					// forChild =
-					// "SP^base:::FP^field:::SE^Sprite::PX^1::PTR^0::IX^1::ITR^0";
+					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
+					route = 3;
+					break;
+				}
+				// case 3: {
+				// (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0",
+				// app1)).click();
+				// forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^1::ITR^0";
+				// route = 4;
+				// break;
+				// }
+				case 3: {
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0", app1))
+							.click();
+					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
 					route = 1;
 					break;
 				}

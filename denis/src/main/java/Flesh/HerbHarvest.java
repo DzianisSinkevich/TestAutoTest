@@ -24,9 +24,11 @@ public class HerbHarvest extends GenieScript {
 		String nameObject = "";
 		int kolvo = 0;
 		boolean appConnect = true;
+		int littleCount = 0;
 
 		EXIT_ON_FAILURE = false;
 		CAPTURE_SCREENSHOT_ON_FAILURE = false;
+		com.adobe.genie.executor.GenieScript.EXECUTION_DELAY_BEFORE_STEP = 1;
 
 		SWFApp app1 = connectToApp("[object init]");
 		(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1)).click();
@@ -46,16 +48,19 @@ public class HerbHarvest extends GenieScript {
 
 			log.warn("START FOR");
 			for (GenieComponent gc : childs) {
-
+				// String objectType = new GenieDisplayObject(gc.getGenieID(), app1).getValueOf("type");
+				// if (!objectType.equals("fish_blue_r_fla::sensor_4")) {
 				new GenieSprite(gc.getGenieID(), app1).click();
 				// gc.click();
-				nameObject = new GenieDisplayObject("SP^base:::FP^frame_corner_TR:::SE^TextField::PX^8::PTR^0::IX^5::ITR^0", app1).getValueOf("text");
+				nameObject = new GenieDisplayObject("SP^base:::FP^frame_corner_TR:::SE^TextField::PX^8::PTR^0::IX^5::ITR^0", app1)
+						.getValueOf("text");
 				log.info("START IF RESOURCE.");
 				// if (nameObject.equals("Мухомор")) {
 				if ((nameObject.equals("Рябинник")) || (nameObject.equals("Крапива"))) {
 
 					log.info("START FARMING.");
-					(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^2::PTR^0::IX^2::ITR^0", app1)).click();
+					(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^1::PTR^0::IX^2::ITR^0", app1))
+							.click();
 
 					for (int t = 0; t < 25; t++) {
 						Thread.sleep(500);
@@ -77,14 +82,17 @@ public class HerbHarvest extends GenieScript {
 							appConnect = false;
 							break;
 						} catch (Exception e) {
-							if ((new GenieDisplayObject("SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0", app1)).isPresent()) {
+							if ((new GenieDisplayObject("SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0",
+									app1)).isPresent()) {
 
-								(new GenieSprite("SP^base:::FP^farming_popup:::SE^Sprite::PX^3::PTR^0::IX^3::ITR^0", app1)).click();
+								(new GenieSprite("SP^base:::FP^farming_popup:::SE^Sprite::PX^3::PTR^0::IX^3::ITR^0", app1))
+										.click();
 								kolvo++;
 								log.warn("HARVESTED!");
 								log.info("END FARMING.");
 								log.info("------------------------------------------------------------------------------------------------------------ COUNT - "
 										+ kolvo);
+								misRes++;
 								break;
 							}
 						}
@@ -98,6 +106,7 @@ public class HerbHarvest extends GenieScript {
 				} else {
 					misRes++;
 				}
+				// }
 			}
 			if (!appConnect) {
 				break;
@@ -107,27 +116,35 @@ public class HerbHarvest extends GenieScript {
 				misRes = 0;
 				switch (route) {
 				case 1: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1)).click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1))
+							.click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^3::ITR^0";
 					route = 2;
+					littleCount = 0;
 					break;
 				}
 				case 2: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0", app1)).click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0", app1))
+							.click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
 					route = 3;
+					littleCount = 0;
 					break;
 				}
 				case 3: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0", app1)).click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0", app1))
+							.click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^1::ITR^0";
 					route = 4;
+					littleCount = 0;
 					break;
 				}
 				case 4: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0", app1)).click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0", app1))
+							.click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
 					route = 1;
+					littleCount = 0;
 					break;
 				}
 				}
