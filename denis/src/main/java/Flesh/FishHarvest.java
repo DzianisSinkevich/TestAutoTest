@@ -40,7 +40,8 @@ public class FishHarvest extends GenieScript {
 		log.warn("START GENERAL FOR");
 		for (int i = 0; i < 10000; i++) {
 			misRes = 0;
-			log.info("------------------------------------------------------------------------------------------------------------ COUNT - " + kolvo);
+			log.info("------------------------------------------------------------------------------------------------------------ COUNT - "
+					+ kolvo);
 			log.info("START SEARCH OF CHILDREN");
 			GenieLocatorInfo info = new GenieLocatorInfo();
 			info.propertyValueTable.put("name", "sensor");
@@ -52,7 +53,8 @@ public class FishHarvest extends GenieScript {
 
 			log.warn("START FOR");
 			for (GenieComponent gc : childs) {
-				log.info("------------------------------------------------------------------------------------------------------------ COUNT - " + kolvo);
+				log.info("------------------------------------------------------------------------------------------------------------ COUNT - "
+						+ kolvo);
 
 				// nameObject1 = new GenieDisplayObject(gc.getGenieID(), app1).getValueOf("type");
 				nameObject = gc.getValueOf("type");
@@ -60,12 +62,14 @@ public class FishHarvest extends GenieScript {
 				if (nameObject.equals("fish_blue_r_fla::sensor_4")) {
 					gc.click();
 					log.info("START FARMING.");
-					(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^3::PTR^0::IX^2::ITR^0", app1)).click();
+					(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^3::PTR^0::IX^2::ITR^0", app1))
+							.click();
 					Thread.sleep(11000);
 
 					log.info("START WAIT END OF FARMING.");
 					for (int k = 0; k < 35; k++) {
-						if ((new GenieDisplayObject("SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0", app1)).isPresent()) {
+						if ((new GenieDisplayObject("SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0", app1))
+								.isPresent()) {
 							(new GenieSprite("SP^base:::FP^farming_popup:::SE^Sprite::PX^3::PTR^0::IX^3::ITR^0", app1)).click();
 							kolvo++;
 							log.warn("HARVESTED!");
@@ -88,33 +92,36 @@ public class FishHarvest extends GenieScript {
 				switch (route) {
 				// SOUTH
 				case 1: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1)).click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1))
+							.click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^3::ITR^0";
 					route = 2;
 					break;
 				}
-				//NORD
-					// case 2: {
-					// (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0", app1)).click();
-					// forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
-					// route = 3;
-					// break;
-					// }
+				// NORD
+				// case 2: {
+				// (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0",
+				// app1)).click();
+				// forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
+				// route = 3;
+				// break;
+				// }
 				// EAST
-					// case 3: {
-					// (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0",
-					// app1)).click();
-					// forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^1::ITR^0";
-					// route = 4;
-					// break;
-					// }
-				// WEST
 				case 2: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0", app1)).click();
-					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0", app1))
+							.click();
+					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^1::ITR^0";
 					route = 1;
 					break;
 				}
+				// WEST
+				// case 2: {
+				// (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0",
+				// app1)).click();
+				// forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
+				// route = 1;
+				// break;
+				// }
 				}
 			}
 
