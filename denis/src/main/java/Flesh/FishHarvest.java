@@ -64,7 +64,7 @@ public class FishHarvest extends GenieScript {
 					log.info("START FARMING.");
 					(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^3::PTR^0::IX^2::ITR^0", app1))
 							.click();
-					Thread.sleep(11000);
+					Thread.sleep(20000);
 
 					log.info("START WAIT END OF FARMING.");
 					for (int k = 0; k < 35; k++) {
@@ -99,14 +99,14 @@ public class FishHarvest extends GenieScript {
 					break;
 				}
 				// NORD
-				// case 2: {
-				// (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0",
-				// app1)).click();
-				// forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
-				// route = 3;
-				// break;
-				// }
-				// EAST
+//				 case 2: {
+//				 (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0",
+//				 app1)).click();
+//				 forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
+//				 route = 3;
+//				 break;
+//				 }
+//				 EAST
 				case 2: {
 					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0", app1))
 							.click();
@@ -115,13 +115,13 @@ public class FishHarvest extends GenieScript {
 					break;
 				}
 				// WEST
-				// case 2: {
-				// (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0",
-				// app1)).click();
-				// forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
-				// route = 1;
-				// break;
-				// }
+//				 case 3: {
+//				 (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0",
+//				 app1)).click();
+//				 forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
+//				 route = 1;
+//				 break;
+//				 }
 				}
 			}
 
