@@ -57,8 +57,8 @@ public class HerbHarvest extends GenieScript {
 
 			log.warn("START FOR");
 			for (int j = 0; j < childs.length; j++) {
-				GenieComponent gc = childs[j];
-				getGenieID = gc.getGenieID();
+//				GenieComponent gc = childs[j];
+				getGenieID = childs[j].getGenieID();
 				if (j == 0) {
 					try {
 						SWFApp app2 = connectToApp("fight");

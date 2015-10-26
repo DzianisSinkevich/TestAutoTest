@@ -50,8 +50,8 @@ public class Main {
 	}
 
 	private static void doScript(String className) {
-		String path = "F:\\JAVA\\GIT\\Denis\\target\\classes\\Flesh\\";
-		// String path = "D:\\GIT\\TestAutoTest\\Denis\\target\\classes\\Flesh\\";
+//		String path = "F:\\JAVA\\GIT\\Denis\\target\\classes\\Flesh\\";
+		 String path = "D:\\GIT\\TestAutoTest\\Denis\\target\\classes\\Flesh\\";
 		// String path = "E:\\git\\TestAutoTest\\denis\\target\\classes\\Flesh\\";
 		GenieScriptsExecutor.ExecuteScript(path + className + ".class");
 	}
