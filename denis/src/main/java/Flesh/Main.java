@@ -20,7 +20,7 @@ public class Main {
 		driver.get("http://cosmics.net/");
 		driver.manage().window().setSize(new Dimension(1200, 950));
 		Thread.sleep(1000);
-		driver.findElement(By.id("edit-name")).sendKeys("denis13th@mail.ru");
+		driver.findElement(By.id("edit-name")).sendKeys("sidco92@mail.ru");
 		driver.findElement(By.id("edit-pass")).sendKeys("adept13a");
 		driver.findElement(By.id("edit-submit")).click();
 		Thread.sleep(4000);
@@ -33,7 +33,7 @@ public class Main {
 		for (int i = 0; i < 100; i++) {
 			doScript("OhotaMenuClick");
 			Thread.sleep(4000);
-			doScript("HerbHarvest");
+			doScript("StoneHarvest");
 			checkAttack(driver);
 		}
 		Thread.sleep(2000);

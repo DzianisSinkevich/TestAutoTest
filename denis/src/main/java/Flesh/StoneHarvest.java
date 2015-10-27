@@ -34,8 +34,7 @@ public class StoneHarvest extends GenieScript {
 		CAPTURE_SCREENSHOT_ON_FAILURE = false;
 
 		SWFApp app1 = connectToApp("[object init]");
-		(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1))
-				.click();
+		(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1)).click();
 
 		log.warn("START GENERAL FOR");
 		for (int i = 0; i < 10000; i++) {
@@ -54,19 +53,15 @@ public class StoneHarvest extends GenieScript {
 			for (GenieComponent gc : childs) {
 				if (!gc.getValueOf("type").equals("fish_blue_r_fla::sensor_4")) {
 					new GenieSprite(gc.getGenieID(), app1).click();
-					nameObject = new GenieDisplayObject(
-							"SP^base:::FP^frame_corner_TR:::SE^TextField::PX^8::PTR^0::IX^5::ITR^0", app1)
-									.getValueOf("text");
+					nameObject = new GenieDisplayObject("SP^base:::FP^frame_corner_TR:::SE^TextField::PX^8::PTR^0::IX^5::ITR^0", app1).getValueOf("text");
 					log.info("START IF RESOURCE.");
 					// if (nameObject.equals("Хитин")) {
 					if ((nameObject.equals("Кремний")) || (nameObject.equals("Авантюрин"))) {
 
 						log.info("START FARMING.");
-						(new GenieSprite(
-								"SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^3::PTR^0::IX^2::ITR^0",
-								app1)).click();
+						(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^3::PTR^0::IX^2::ITR^0", app1)).click();
 
-						for (int t = 0; t < 13; t++) {
+						for (int t = 0; t < 10; t++) {
 							Thread.sleep(1000);
 							try {
 								SWFApp app2 = connectToApp("fight");
@@ -80,18 +75,14 @@ public class StoneHarvest extends GenieScript {
 						}
 
 						log.info("START WAIT END OF FARMING.");
-						for (int k = 0; k < 35; k++) {
-							if ((new GenieDisplayObject(
-									"SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0", app1))
-											.isPresent()) {
-								(new GenieSprite("SP^base:::FP^farming_popup:::SE^Sprite::PX^3::PTR^0::IX^3::ITR^0",
-										app1)).click();
+						for (int k = 0; k < 10; k++) {
+							if ((new GenieDisplayObject("SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0", app1)).isPresent()) {
+								(new GenieSprite("SP^base:::FP^farming_popup:::SE^Sprite::PX^3::PTR^0::IX^3::ITR^0", app1)).click();
 								kolvo++;
 								log.warn("HARVESTED!");
 								log.info("END FARMING.");
-								log.info(
-										"------------------------------------------------------------------------------------------------------------ COUNT - "
-												+ kolvo);
+								log.info("------------------------------------------------------------------------------------------------------------ COUNT - "
+										+ kolvo);
 								misRes++;
 								break;
 							}
@@ -101,6 +92,8 @@ public class StoneHarvest extends GenieScript {
 					} else {
 						misRes++;
 					}
+				} else {
+					misRes++;
 				}
 			}
 			if (!appConnect) {
@@ -111,9 +104,7 @@ public class StoneHarvest extends GenieScript {
 				misRes = 0;
 				switch (route) {
 				case 1: {
-					(new GenieDisplayObject(
-							"SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1))
-									.click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1)).click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^3::ITR^0";
 					// forChild =
 					// "FP^field:::SE^Sprite:::CH^flash.display::PX^3::PTR^0::IX^1::ITR^0";
@@ -121,9 +112,7 @@ public class StoneHarvest extends GenieScript {
 					break;
 				}
 				case 2: {
-					(new GenieDisplayObject(
-							"SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0", app1))
-									.click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0", app1)).click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
 					// forChild =
 					// "SP^base:::FP^field:::SE^Sprite::PX^0::PTR^0::IX^1::ITR^0";
@@ -131,9 +120,7 @@ public class StoneHarvest extends GenieScript {
 					break;
 				}
 				case 3: {
-					(new GenieDisplayObject(
-							"SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0", app1))
-									.click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0", app1)).click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^1::ITR^0";
 					// forChild =
 					// "SP^base:::FP^field:::SE^Sprite::PX^1::PTR^0::IX^1::ITR^0";
@@ -141,9 +128,7 @@ public class StoneHarvest extends GenieScript {
 					break;
 				}
 				case 4: {
-					(new GenieDisplayObject(
-							"SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0", app1))
-									.click();
+					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0", app1)).click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
 					// forChild =
 					// "SP^base:::FP^field:::SE^Sprite::PX^2::PTR^0::IX^1::ITR^0";
