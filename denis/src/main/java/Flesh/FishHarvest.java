@@ -26,6 +26,8 @@ public class FishHarvest extends GenieScript {
 		int misRes = 0;
 		String forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^3::ITR^0";
 		int route = 2;
+		boolean appConnect = true;
+		String getGenieID = "";
 
 		String nameObject = "";
 		String nameObject1 = "";
@@ -35,7 +37,9 @@ public class FishHarvest extends GenieScript {
 		CAPTURE_SCREENSHOT_ON_FAILURE = false;
 
 		SWFApp app1 = connectToApp("[object init]");
-		(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1)).click();
+		(new GenieDisplayObject(
+				"SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0",
+				app1)).click();
 
 		log.warn("START GENERAL FOR");
 		for (int i = 0; i < 10000; i++) {
@@ -50,35 +54,76 @@ public class FishHarvest extends GenieScript {
 			log.info("ADD CHILDREN IN ARRAY");
 			GenieComponent[] childs = root.getChildren(info, true);
 			log.info("END SEARCH OF CHILDREN.");
+			try {
+				SWFApp app2 = connectToApp("fight");
+				appConnect = false;
+				break;
+			} catch (Exception e) {
+			}
 
 			log.warn("START FOR");
-			for (GenieComponent gc : childs) {
+			for (int j = 0; j < childs.length; j++) {
+				// GenieComponent gc = childs[j];
+				getGenieID = childs[j].getGenieID();
 				log.info("------------------------------------------------------------------------------------------------------------ COUNT - "
 						+ kolvo);
+				if (j == 0) {
+					try {
+						SWFApp app2 = connectToApp("fight");
+						appConnect = false;
+						break;
+					} catch (Exception e) {
+					}
+				}
 
-				// nameObject1 = new GenieDisplayObject(gc.getGenieID(), app1).getValueOf("type");
-				nameObject = gc.getValueOf("type");
+				// nameObject1 = new GenieDisplayObject(gc.getGenieID(),
+				// app1).getValueOf("type");
+				nameObject = childs[j].getValueOf("type");
 				log.info("START IF FISH.");
 				if (nameObject.equals("fish_blue_r_fla::sensor_4")) {
-					gc.click();
+					childs[j].click();
 					log.info("START FARMING.");
-					(new GenieSprite("SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^3::PTR^0::IX^2::ITR^0", app1))
-							.click();
-					Thread.sleep(20000);
+					(new GenieSprite(
+							"SP^frame_corner_TL:::FP^frame_corner_TL_btn:::SE^Sprite::PX^3::PTR^0::IX^2::ITR^0",
+							app1)).click();
+					for (int t = 0; t < 9; t++) {
+						Thread.sleep(500);
+						try {
+							SWFApp app2 = connectToApp("fight");
+							appConnect = false;
+							break;
+						} catch (Exception e) {
+						}
+					}
+					if (!appConnect) {
+						break;
+					}
 
 					log.info("START WAIT END OF FARMING.");
 					for (int k = 0; k < 35; k++) {
-						if ((new GenieDisplayObject("SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0", app1))
-								.isPresent()) {
-							(new GenieSprite("SP^base:::FP^farming_popup:::SE^Sprite::PX^3::PTR^0::IX^3::ITR^0", app1)).click();
-							kolvo++;
-							log.warn("HARVESTED!");
-							log.info("END FARMING.");
-							log.info("------------------------------------------------------------------------------------------------------------ COUNT - "
-									+ kolvo);
+						try {
+							SWFApp app2 = connectToApp("fight");
+							appConnect = false;
 							break;
+						} catch (Exception e) {
+							if ((new GenieDisplayObject(
+									"SP^base:::FP^farming_popup:::SE^TextField::PX^3::PTR^0::IX^0::ITR^0",
+									app1)).isPresent()) {
+								(new GenieSprite(
+										"SP^base:::FP^farming_popup:::SE^Sprite::PX^3::PTR^0::IX^3::ITR^0",
+										app1)).click();
+								kolvo++;
+								log.warn("HARVESTED!");
+								log.info("END FARMING.");
+								log.info("------------------------------------------------------------------------------------------------------------ COUNT - "
+										+ kolvo);
+								break;
+							}
 						}
 						Thread.sleep(250);
+					}
+					if (!appConnect) {
+						break;
 					}
 					// break;
 				} else {
@@ -86,42 +131,50 @@ public class FishHarvest extends GenieScript {
 					misRes++;
 				}
 			}
-
+			if (!appConnect) {
+				break;
+			}
 			if (misRes >= childs.length) {
 				misRes = 0;
 				switch (route) {
 				// SOUTH
 				case 1: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0", app1))
-							.click();
+					(new GenieDisplayObject(
+							"SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^8::PTR^0::IX^0::ITR^0",
+							app1)).click();
 					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^3::ITR^0";
 					route = 2;
 					break;
 				}
 				// NORD
-//				 case 2: {
-//				 (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0",
-//				 app1)).click();
-//				 forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
-//				 route = 3;
-//				 break;
-//				 }
-//				 EAST
-				case 2: {
-					(new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0", app1))
-							.click();
-					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^1::ITR^0";
-					route = 1;
-					break;
-				}
+				 case 2: {
+				 (new
+				 GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^5::PTR^0::IX^0::ITR^0",
+				 app1)).click();
+				 forChild =
+				 "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^0::ITR^0";
+				 route = 3;
+				 break;
+				 }
+				// EAST
+//				case 2: {
+//					(new GenieDisplayObject(
+//							"SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^6::PTR^0::IX^0::ITR^0",
+//							app1)).click();
+//					forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^1::ITR^0";
+//					route = 1;
+//					break;
+//				}
 				// WEST
-//				 case 3: {
-//				 (new GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0",
-//				 app1)).click();
-//				 forChild = "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
-//				 route = 1;
-//				 break;
-//				 }
+				 case 3: {
+				 (new
+				 GenieDisplayObject("SP^frame_bor_T:::FP^frame_bor_T_btn:::SE^map_hlight::PX^7::PTR^0::IX^0::ITR^0",
+				 app1)).click();
+				 forChild =
+				 "FP^base:::SE^field:::CH^field::PX^0::PTR^0::IX^2::ITR^0";
+				 route = 1;
+				 break;
+				 }
 				}
 			}
 

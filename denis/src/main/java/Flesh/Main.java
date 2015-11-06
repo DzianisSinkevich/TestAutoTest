@@ -20,20 +20,24 @@ public class Main {
 		driver.get("http://cosmics.net/");
 		driver.manage().window().setSize(new Dimension(1200, 950));
 		Thread.sleep(1000);
-		driver.findElement(By.id("edit-name")).sendKeys("sidco92@mail.ru");
+		driver.findElement(By.id("edit-name")).sendKeys("sidco93@mail.ru");
 		driver.findElement(By.id("edit-pass")).sendKeys("adept13a");
 		driver.findElement(By.id("edit-submit")).click();
 		Thread.sleep(4000);
 		driver.switchTo().frame("chat");
 		Thread.sleep(1000);
-		driver.findElement(By.cssSelector("[onclick='chatToggleChannel(1);']")).click();
+		driver.findElement(By.cssSelector("[onclick='chatToggleChannel(1);']"))
+				.click();
 		driver.switchTo().defaultContent();
 
 		// doScript("FishHarvest");
 		for (int i = 0; i < 100; i++) {
-			doScript("OhotaMenuClick");
+			driver.switchTo().defaultContent();
+			driver.switchTo().frame("main_frame");
+			driver.findElement(By.cssSelector("[class='menu_4']")).click();
+			// doScript("OhotaMenuClick");
 			Thread.sleep(4000);
-			doScript("StoneHarvest");
+			doScript("FishHarvest");
 			checkAttack(driver);
 		}
 		Thread.sleep(2000);
@@ -50,21 +54,28 @@ public class Main {
 	}
 
 	private static void doScript(String className) {
-//		String path = "F:\\JAVA\\GIT\\Denis\\target\\classes\\Flesh\\";
-		 String path = "D:\\GIT\\TestAutoTest\\Denis\\target\\classes\\Flesh\\";
-		// String path = "E:\\git\\TestAutoTest\\denis\\target\\classes\\Flesh\\";
+		String path = "F:\\JAVA\\GIT\\Denis\\target\\classes\\Flesh\\";
+		// String path =
+		// "D:\\GIT\\TestAutoTest\\Denis\\target\\classes\\Flesh\\";
+		// String path =
+		// "E:\\git\\TestAutoTest\\denis\\target\\classes\\Flesh\\";
 		GenieScriptsExecutor.ExecuteScript(path + className + ".class");
 	}
 
-	public static void checkAttack(WebDriver driver) throws InterruptedException {
-		driver.switchTo().frame("chat");
-		driver.switchTo().frame("if1");
-		elements = driver.findElements(By.cssSelector("[id^='msg']"));
-		for (WebElement element : elements) {
-			System.out.println(element.getText());
-			doScript("Battle");
-			break;
-		}
-		driver.switchTo().defaultContent();
+	public static void checkAttack(WebDriver driver)
+			throws InterruptedException {
+		doScript("Battle");
+		// driver.switchTo().defaultContent();
+		// driver.switchTo().frame("chat");
+		// driver.switchTo().frame("if1");
+		// elements = driver.findElements(By.cssSelector("[id^='msg']"));
+		// for (WebElement element : elements) {
+		// if (element.getText().contains("Вы ")) {
+		// System.out.println("Start BATTLE");
+		// doScript("Battle");
+		// break;
+		// }
+		// }
+		// driver.switchTo().defaultContent();
 	}
 }

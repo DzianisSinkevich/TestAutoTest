@@ -83,7 +83,7 @@ public class HerbHarvest extends GenieScript {
 				log.info("START IF RESOURCE.");
 				// if (nameObject.equals("Мухомор")) {
 				if ((nameObject.equals("Рябинник"))
-						|| (nameObject.equals("Крапива"))) {
+						|| (nameObject.equals("Мухомор"))) {
 
 					log.info("START FARMING.");
 					(new GenieSprite(
